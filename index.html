@@ -42,18 +42,28 @@
           const { createApp, ref } = Vue
           createApp({
             setup() {
-              const cart= ref(0);
+              const cart = ref(0);
               const addToCart = () => {
                 cart.value += 1;
               }
+               
+        const image = ref('./assets/images/t-shirt-blue.png');
+        const changeImage = (variantImage) => {
+          image.value = variantImage;
+        }
               return {
               product_title: ref('T-shirt'),
-              image: ref('./assets/images/t-shirt-blue.png'),
-              inStock: ref(100),
+              image,
+              inStock: ref(15),
               details: ref(['50% cotton', '30% polyester', '20% wool ']),
               variants: [{id:1, color: 'blue'}, {id:2, color: 'green'}],
               cart: ref(0),
-              addToCart
+              variants: 
+              [{id:1, color: 'blue', image: './assets/images/t-shirt-blue.png'},
+              {id:2, color: 'green', image: './assets/images/t-shirt-green.png'}],
+              cart,
+              addToCart,
+              changeImage
               }
             }
           }).mount('#app')
